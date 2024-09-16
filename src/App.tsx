@@ -1,10 +1,5 @@
 const App = () => {
-  return (
-    <div>
-      <span>Hellow World</span>
-      <input />
-    </div>
-  )
+  return <div>Hellow World</div>
 }
 
 export default App

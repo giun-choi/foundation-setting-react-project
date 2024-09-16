@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.tsx',
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'build')
