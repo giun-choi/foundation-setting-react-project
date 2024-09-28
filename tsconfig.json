@@ -5,6 +5,10 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "images": ["./src/assets/images/*"],
+      "svgs": ["./src/assets/svgs/*"],
+    },
   },
 }
