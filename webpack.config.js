@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -9,7 +10,11 @@ module.exports = {
     path: path.resolve(__dirname, 'build')
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tsx']
+    extensions: ['.js', '.jsx', '.tsx', '.ts'],
+    alias: {
+      images: path.resolve(__dirname, 'src/assets/images/'),
+      svgs: path.resolve(__dirname, 'src/assets/svgs/')
+    }
   },
   module: {
     rules: [
@@ -22,7 +27,7 @@ module.exports = {
             ['@babel/preset-react', { runtime: 'automatic' }]
           ]
         },
-        exclude: /node_modules/
+        exclude: [/node_modules/, /public/]
       },
       {
         test: /\.tsx?$/,
@@ -35,12 +40,20 @@ module.exports = {
         options: {
           minimize: true
         }
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        type: 'asset/resource'
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html')
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+      ]
     })
   ],
   devServer: {
